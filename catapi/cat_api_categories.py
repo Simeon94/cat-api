@@ -11,7 +11,10 @@ import pandas as pd
 from json2html import *
 from flask import Flask, Blueprint, redirect, url_for, render_template
 
+# link for the index.html file
 template_dir = os.path.abspath('./')
+
+# app variable for Flask: method was useful, research and deployed it
 app = Flask(__name__, template_folder=template_dir)
 
 
@@ -31,11 +34,13 @@ app = Flask(__name__, template_folder=template_dir)
 @app.route("/")
 def index():
     url = "https://api.thecatapi.com/v1/categories"
-
+    
+    #key for connection
     headers = {'x-api-key': '5baba247-1b72-4049-bd44-53cea33b8b97'}
 
     response = requests.request("GET", url, headers=headers)
-
+    
+    #called response at json
     cats = response.json()
     print(cats)
 
